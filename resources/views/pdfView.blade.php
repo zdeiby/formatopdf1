@@ -53,6 +53,23 @@
         }
  
 
+        .text-with-x {
+            position: relative;
+            display: inline-block;
+        }
+
+        .text-with-x::before {
+            content: 'X';
+            position: absolute;
+            color: red; /* Puedes cambiar el color de la "X" */
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            font-size: 24px; /* Tamaño de la "X" */
+            pointer-events: none; /* Para que no interfiera con clics u otros eventos */
+        }
+
+
 
     </style>
 
@@ -87,7 +104,7 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 50%; text-align:center; vertical-align: middle; height:25px;">FECHA VISITA:</td>
-                    <td style="border: 1px solid black; padding: 5px; text-align: center; vertical-align: middle;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align: center; vertical-align: middle;">{{$variable[0]->Fecha}}</td>
                 </tr>
             </table>
         </td>
@@ -96,7 +113,7 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 50%; text-align:center; height:25px;">HORA INICIAL:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Horainicial}}</td>
                 </tr>
             </table>
         </td>
@@ -105,7 +122,7 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 50%; text-align:center;">HORA FINAL:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Horafinal}}</td>
                 </tr>
             </table>
         </td>
@@ -114,8 +131,8 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 30%; height:25px; text-align:center;">UBICACIÓN:</td>
-                    <td style="border: 1px solid black; padding: 5px;">Urbano</td>
-                    <td style="border: 1px solid black; padding: 5px;">Rural</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Zonasede}}</td>
+                    <!-- <td style="border: 1px solid black; padding: 5px;">Rural</td> -->
                 </tr>
             </table>
         </td>
@@ -125,9 +142,9 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">TIPO DE VISITA:</td>
-                    <td style="border: 1px solid black; padding: 5px;">Progra</td>
-                    <td style="border: 1px solid black; padding: 5px;">PQRS</td>
-                    <td style="border: 1px solid black; padding: 5px;">Otro</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Tipovisita}}</td>
+                    <!-- <td style="border: 1px solid black; padding: 5px;">{{($variable[0]->Tipovisita == 'PQRS')?$variable[0]->Tipovisita:''}}</td>
+                    <td style="border: 1px solid black; padding: 5px;">{{($variable[0]->Tipovisita == 'Otro')?$variable[0]->Tipovisita:''}}</td> -->
                 </tr>
             </table>
         </td>
@@ -136,8 +153,8 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">Número de Visita</td>
-                    <td style="border: 1px solid black; padding: 5px;">1</td>
-                    <td style="border: 1px solid black; padding: 5px;">2</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Numerovisita}}</td>
+                    <!-- <td style="border: 1px solid black; padding: 5px;">2</td> -->
                 </tr>
             </table>
         </td>
@@ -146,8 +163,8 @@
             <table style="width: 97%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; height:25px; text-align:center;">Sede Unificada</td>
-                    <td style="border: 1px solid black; padding: 5px;">Sí</td>
-                    <td style="border: 1px solid black; padding: 5px;">No</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Sedeunificada}}</td>
+                    <!-- <td style="border: 1px solid black; padding: 5px;">No</td> -->
                 </tr>
             </table>
         </td>
@@ -171,15 +188,15 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%;  text-align:center;">DANE INSTITUCIÓN:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Daneinstitucion}}</td>
                 </tr>
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">DANE SEDE:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Danesede}}</td>
                 </tr>
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">NÚMERO DE OPERACIÓN:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Numerooperacion}}</td>
                 </tr>
             </table>
         </td>
@@ -192,15 +209,15 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">NOMBRE INSTITUCIÓN:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Nombreinstitucion}}</td>
                 </tr>
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">NOMBRE SEDE:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Nombresede}}</td>
                 </tr>
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 40%; text-align:center;">OPERADOR:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Operador}}</td>
                 </tr>
             </table>
         </td>
@@ -220,7 +237,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 50%; height:36px;">FOCALIZADOS:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Focalizacionsede}}</td>
                 </tr>
             </table>
         </td>
@@ -230,7 +247,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 50%;height:36px;">ATENDIDOS:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Atendidos}}</td>
                 </tr>
             </table>
         </td>
@@ -240,8 +257,8 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 60%;">CORRESPONDE LA CANTIDAD DE USUARIOS FOCALIZADOS CON LOS ATENDIDOS?</td>
-                    <td style="border: 1px solid black; padding: 5px; text-align: center;">Sí</td>
-                    <td style="border: 1px solid black; padding: 5px; text-align: center;">No</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align: center;">{{$variable[0]->Correspondeusuarios}}</td>
+                    <!-- <td style="border: 1px solid black; padding: 5px; text-align: center;">No</td> -->
                 </tr>
             </table>
         </td>
@@ -251,7 +268,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 70%;height:36px;">FECHA ÚLTIMA VISITA AUTORIDAD SANITARIA:</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px;">{{$variable[0]->Fechasanitaria}}</td>
                 </tr>
             </table>
         </td>
@@ -261,7 +278,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 50%;">% OBTENIDO AUTORIDAD SANITARIA</td>
-                    <td style="border: 1px solid black; padding: 5px;"></td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center;">{{$variable[0]->Porcentajesanitario}}</td>
                 </tr>
             </table>
         </td>
@@ -271,45 +288,69 @@
 
 
 
-
-
-
 <table style="width: 100%; border-collapse: collapse; font-size: 10px; text-align: center; margin-bottom: 5px;">
     <tr>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Modalidad</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">AM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">PM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">JU</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">RI</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">
+                AM
+                {!!($variable[0]->Modalidad == 'AM')?'<span style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}
+        </td>
+
+        
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">PM
+        {!!($variable[0]->Modalidad == 'PM')?'<span style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">JU
+        {!! (strpos($variable[0]->Modalidad, 'JORNADA') !== false) ? '<span style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>' : '' !!} 
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">RI
+        {!!($variable[0]->Modalidad == 'RI')?'<span style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Menú</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">S</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">{{$variable[0]->Menumodalidad}}</td>
+        <!-- <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td> -->
     </tr>
 </table>
 
 <table style="width: 100%; border-collapse: collapse; font-size: 10px; text-align: center; margin-bottom: 5px;">
     <tr>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Modalidad<br>Sede Unificada 1</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">AM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">PM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">JU</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">RI</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">AM                
+            {!!($variable[0]->Modalidadsu1 == 'AM')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">PM        
+            {!!($variable[0]->Modalidadsu1 == 'PM')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">JU        
+            {!! (strpos($variable[0]->Modalidadsu1, 'JORNADA') !== false) ? '<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>' : '' !!} 
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%; position: relative;">RI        
+            {!!($variable[0]->Modalidadsu1 == 'RI')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Menú</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">S</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">{{$variable[0]->Menumodalidadsu1}}</td>
+        <!-- <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td> -->
     </tr>
 </table>
 
 <table style="width: 100%; border-collapse: collapse; font-size: 10px; text-align: center; padding-bottom: 5px;">
     <tr>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Modalidad<br>Sede Unificada</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">AM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">PM</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">JU</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">RI</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;position: relative;">AM
+                        {!!($variable[0]->Modalidadsu2 == 'AM')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;position: relative;">PM
+                        {!!($variable[0]->Modalidadsu2 == 'PM')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;position: relative;">JU
+                        {!! (strpos($variable[0]->Modalidadsu2, 'JORNADA') !== false) ? '<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>' : '' !!} 
+        </td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;position: relative;">RI
+                        {!!($variable[0]->Modalidadsu2 == 'RI')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+        </td>
         <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; width: 12.5%;">Menú</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">S</td>
-        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td>
+        <td style="border: 1px solid black; padding: 5px; width: 12.5%;">{{$variable[0]->Menumodalidadsu2}}</td>
+        <!-- <td style="border: 1px solid black; padding: 5px; width: 12.5%;">M</td> -->
     </tr>
 </table>
 
@@ -328,7 +369,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 70%; height:25px;">Cantidad Manipuladores evidenciados</td>
-                    <td style="border: 1px solid black; padding: 5px; width: 30%;"></td>
+                    <td style="border: 1px solid black; padding: 5px; width: 30%;">{{$variable[0]->Cantidadmanip}}</td>
                 </tr>
             </table>
         </td>
@@ -338,10 +379,14 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 25%;">CONCEPTO AUTORIDAD SANITARIA</td>
-                    <td style="border: 1px solid black; padding: 5px; width: 10%; width: 25%;"></td>
+                    <td style="border: 1px solid black; padding: 5px; width: 10%; width: 25%;">{{$variable[0]->Conceptosanitario}}</td>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 25%;">Entrega Copia de visita Autoridad Sanitaria</td>
-                    <td style="border: 1px solid black; padding: 5px; text-align:center; width: 10%;">Si</td>
-                    <td style="border: 1px solid black; padding: 5px; text-align:center; width: 10%;">No</td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center; width: 10%; position: relative;">Si
+                    {!!($variable[0]->Copiasanitaria == 'SI')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}
+                    </td>
+                    <td style="border: 1px solid black; padding: 5px; text-align:center; width: 10%;position: relative;">No
+                    {!!($variable[0]->Copiasanitaria == 'NO')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}
+                    </td>
                 </tr>
             </table>
         </td>
@@ -352,7 +397,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 50%;height:25px;">Fecha última Fumigación</td>
-                    <td style="border: 1px solid black; padding: 5px; width: 50%;"></td>
+                    <td style="border: 1px solid black; padding: 5px; width: 50%;">{{$variable[0]->Fechaultimafumiga}}</td>
                 </tr>
             </table>
         </td>
@@ -362,7 +407,7 @@
             <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
                 <tr>
                     <td style="background-color: #eaeaea; border: 1px solid black; padding: 5px; text-align:center; vertical-align: middle; width: 50%;height:25px;">Fecha Lavado Tanque Agua</td>
-                    <td style="border: 1px solid black; padding: 5px; width: 50%;"></td>
+                    <td style="border: 1px solid black; padding: 5px; width: 50%;">{{$variable[0]->Fechalavadotanque}}</td>
                 </tr>
             </table>
         </td>
@@ -387,26 +432,19 @@
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'I') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -426,26 +464,19 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'II') { ?>
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -464,26 +495,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'III') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -502,26 +527,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'IV') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -543,26 +562,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'V') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -581,26 +594,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'VI') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -619,26 +626,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'VII') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -656,26 +657,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'VIII') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -693,26 +688,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'IX') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -731,26 +720,20 @@ foreach ($variable as $key => $value) {
         <td style="width: 30%; border: 1px solid black; background-color: #eaeaea; text-align: center;">OBSERVACIONES / REDACTE HALLAZGO EVIDENCIADO</td>
     </tr>
 <?php
-$ultimoIndice = count($variable) - 1;
-foreach ($variable as $key => $value) { 
-    if ($key < $ultimoIndice) { ?>
-    <!-- <table style="width: 100%; border:1px solid black; padding-top: 20px">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->objeto}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2">{{$value->actividad}}</td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"  class="pt-4 pb-2"><img src="../storage/app/public/temp/<?php echo $value->foto;?>.jpg" width="100%"/></td>
-        </tr>
-    </table> -->
+foreach ($variable as $value) { 
+    if ($value->Codigocap == 'X') { ?>
+
     <tr>
-        <td style="width: 5%; border: 1px solid black; text-align: center;">1.1</td>
+        <td style="width: 5%; border: 1px solid black; text-align: center;">{{$value->Codigo}}</td>
         <td style="width: 45%; border: 1px solid black; padding: 5px;">
-            El área de producción del restaurante escolar está ubicado en lugares aislados de cualquier foco de insalubridad que represente riesgos potenciales para la contaminación del alimento.
+            {{$value->Requisito}}
         </td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 5%; border: 1px solid black;"></td>
-        <td style="width: 30%; border: 1px solid black;"></td>
+                <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'C')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NC')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NA')?$value->Cumplimiento:''}}</td>
+        <td style="width: 5%; border: 1px solid black;text-align: center;">{{($value->Cumplimiento == 'NO')?$value->Cumplimiento:''}}</td>
+
+        <td style="width: 30%; border: 1px solid black;">{{$value->Hallazgo}}</td>
     </tr>
 <?php }} ?>
 </table>
@@ -758,7 +741,7 @@ foreach ($variable as $key => $value) {
 
    <hr>
    <table style=""> 
-   <?php if(isset($variable[0]->foto)){ ?>
+   
             <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
             <tr>
                     <td style="width: 100%; border: 1px solid black; text-align: center; padding: 5px; background-color: #eaeaea;" >CALIFICACIÓN Y CONCEPTO</td>
@@ -771,19 +754,27 @@ foreach ($variable as $key => $value) {
             
                 <tr>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Total de variables aplicadas</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 35px;"></td>
+                    <td style="border: 1px solid black; text-align: center; padding: 35px;">{{$variable[0]->Totalvbleaplicada}}</td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Total de variables cumplidas</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 35px;"></td>
+                    <td style="border: 1px solid black; text-align: center; padding: 35px;">{{$variable[0]->Totalvblecumplida}}</td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">% Cumplimiento</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 35px;"></td>
+                    <td style="border: 1px solid black; text-align: center; padding: 35px;">{{$variable[0]->Porcentajefin}}</td>
                     <td class="diagonal-split"></td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Muy Bueno</td>
+                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;position: relative;">Muy Bueno
+                    {!!($variable[0]->Concepto == 'Muy bueno')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+                    </td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;">95% - 100%</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Bueno</td>
+                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea; position: relative;">Bueno
+                    {!!($variable[0]->Concepto == 'Bueno')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+                    </td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;">80% - 94.9%</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Aceptable</td>
+                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea; position: relative;">Aceptable
+                    {!!($variable[0]->Concepto == 'Aceptable')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+                    </td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;">60% - 79.9%</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;">Deficiente</td>
+                    <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea; position: relative;">Deficiente
+                    {!!($variable[0]->Concepto == 'Deficiente')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+                    </td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;">0 - 59.9%</td>
                     <td class="diagonal-split"></td>
                 </tr>
@@ -791,7 +782,7 @@ foreach ($variable as $key => $value) {
 
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
             <tr>
-                    <td style="width: 100%; border: 1px solid black; text-align: left; padding: 5px;" >Observaciones:</td>
+                    <td style="width: 100%; border: 1px solid black; text-align: left; padding: 5px;" >Observaciones: {{$variable[0]->Observacionestec}}</td>
                 </tr>
             </table>
            
@@ -806,9 +797,9 @@ foreach ($variable as $key => $value) {
                 </tr>
                 <tr>
                     <td style="border: 1px solid black; text-align: center; padding: 5px; background-color: #eaeaea;">Firma Interventor:</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;"></td>
+                    <td style="border: 1px solid black; text-align: center; padding: 35px;"></td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px; background-color: #eaeaea;">Firma:</td>
-                    <td style="border: 1px solid black; text-align: center; padding: 5px;"></td>
+                    <td style="border: 1px solid black; text-align: center; padding: 35px;"></td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black; text-align: center; padding: 5px; background-color: #eaeaea;">Doc. Identificación:</td>
@@ -818,49 +809,14 @@ foreach ($variable as $key => $value) {
                 </tr>
             </table>
 
-            <?php }?> 
+           
 
     </table>
 
-   <!-- ultimo cuadro -->
-<!--   
-    <table style=""> 
-    <?php if(isset($variable[0]->foto)){ ?>
-    <table style="width: 100%; border:1px solid black; ">
-        <tr>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;" class="pt-4 pb-2"><?php echo isset(end($variable)->objeto)? end($variable)->objeto : '';?></td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;" class="pt-4 pb-2"> <?php echo isset(end($variable)->actividad)? end($variable)->actividad : '';?></td>
-            <td style="width: 33.33%;border:1px solid black;vertical-align: top;"><img class="mt-4 pb-2" src="../storage/app/public/temp/<?php echo isset(end($variable)->foto)? end($variable)->foto :'';?>.jpg" width="100%"/></td>
-        </tr>
-    </table>  <?php }?> 
-    <div class="" style="padding-top:80px;padding-left:20px">
-    <label for="" style="font-weight:bold;padding-bottom:10px">Firma contratista</label><br>
-    <label>NOMBRES Y APELLIDOS: </label><label for="">&nbsp;&nbsp;{{$datoslistos['nombreapellido']}}</label><br>
-    <label for="">Documento de identidad:</label><label for="">&nbsp;&nbsp;{{$datoslistos['cedula']}}</label><br>
-    <label for="" style="padding-top:80px;font-weight:bold">Firma Coordinador (a)  </label>
-    </div>  
-    </table>
-   
-</div> -->
- <!--fin  ultimo cuadro -->
+
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh97OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-   <!-- <script type="text/php">
-        if (isset($pdf)) {
-        $x = 515;
-        $y = 815;
-        $text = "Página {PAGE_NUM} de {PAGE_COUNT}";
-        $font = null;
-        $size = 10;
-        $color = array(0,0,0);
-        $word_space = 0.0;  //  default
-        $char_space = 0.0;  //  default
-        $angle = 0.0;   //  default
-        $pdf->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
-
-    }
-    </script> -->
- 
+  
 
 
 </body>
