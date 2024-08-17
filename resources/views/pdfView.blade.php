@@ -761,7 +761,7 @@ foreach ($variable as $value) {
                     <td style="border: 1px solid black; text-align: center; padding: 35px;">{{$variable[0]->Porcentajefin}}</td>
                     <td class="diagonal-split"></td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea;position: relative;">Muy Bueno
-                    {!!($variable[0]->Concepto == 'Muy bueno')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
+                    {!!($variable[0]->Concepto == 'Muy Bueno')?'<span style="position: absolute; top: 5; left: 50%; transform: translateX(-50%); font-size: 18px; color: black;">X</span>':''!!}  
                     </td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;">95% - 100%</td>
                     <td style="border: 1px solid black; text-align: center; padding: 5px;background-color: #eaeaea; position: relative;">Bueno
